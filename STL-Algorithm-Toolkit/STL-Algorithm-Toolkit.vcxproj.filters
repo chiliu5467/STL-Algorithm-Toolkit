@@ -15,8 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="STL-Algorithm-Toolkit.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlgorithmToolkit.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

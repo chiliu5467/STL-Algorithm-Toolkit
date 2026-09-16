@@ -75,6 +75,17 @@ void TestFindIf()
 		std::cout << "Even value not found." << std::endl;
 	}
 
+	auto stdIt = std::find_if(
+		numbers.begin(),
+		numbers.end(),
+		[](int value)
+		{
+			return value % 2 == 0;
+		});
+
+	std::cout << "My FindIf: " << *it << '\n';
+	std::cout << "std::find_if: " << *stdIt << '\n';
+
 	int threshold = 20;
 
 	std::list<int> values{
@@ -109,7 +120,7 @@ void TestFindIf()
 	}
 	else
 	{
-		std::cout << "Word with length greater than" << thresholdLength <<  "not found." << std::endl;
+		std::cout << "Word with length greater than " << thresholdLength <<  " not found." << std::endl;
 	}
 
 	std::cout << "------------------------------" << std::endl;

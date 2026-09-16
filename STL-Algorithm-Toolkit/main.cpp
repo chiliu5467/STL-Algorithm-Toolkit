@@ -58,10 +58,68 @@ void TestFindValue()
 	std::cout << "------------------------------" << std::endl;
 }
 
+void TestFindIf()
+{
+	std::cout << "=== Test Find If ===" << std::endl;
+	std::vector<int> numbers{
+	1, 3, 7, 8, 11, 12
+	};
+	auto it = FindIf(numbers.begin(), numbers.end(), 
+		[](int value) {return value % 2 == 0;});
+	if (it != numbers.end())
+	{
+		std::cout << "Found even value: " << *it << std::endl;
+	}
+	else
+	{
+		std::cout << "Even value not found." << std::endl;
+	}
+
+	int threshold = 20;
+
+	std::list<int> values{
+		5, 15, 25, 35
+	};
+
+	auto it2 = FindIf(values.begin(), values.end(), 
+		[threshold](int value) { return value > threshold;});
+
+	if (it2 != values.end())
+	{
+		std::cout << "Found value greater than " << threshold << ": " << *it2 << std::endl;
+	}
+	else
+	{
+		std::cout << "Value greater than " << threshold << " not found." << std::endl;
+	}
+
+	std::vector<std::string> words{
+	"cat",
+	"elephant",
+	"dog",
+	"giraffe"
+	};
+
+	int thresholdLength = 5;
+	auto it3 = FindIf(words.begin(), words.end(), 
+		[thresholdLength](const std::string& word) {return word.length() > thresholdLength;});
+	if (it3 != words.end())
+	{
+		std::cout << "Found word with length greater than 5: " << *it3 << std::endl;
+	}
+	else
+	{
+		std::cout << "Word with length greater than" << thresholdLength <<  "not found." << std::endl;
+	}
+
+	std::cout << "------------------------------" << std::endl;
+}
+
 int main()
 {
 	TestPrintRange();
 	TestFindValue();
+	TestFindIf();
 
 	return 0;
 }

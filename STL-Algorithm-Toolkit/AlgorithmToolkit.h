@@ -23,3 +23,22 @@ Iterator FindValue(Iterator first, Iterator last, const T& value)
 
     return last;
 }
+
+template <typename Iterator, typename Predicate>
+Iterator FindIf(
+    Iterator first,
+    Iterator last,
+    Predicate predicate)
+{
+    while (first != last)
+    {
+        if (predicate(*first))
+        {
+            return first;
+        }
+
+        ++first;
+    }
+
+    return last;
+}

@@ -156,7 +156,7 @@ void TestCountIf()
 	};
 	int thresholdLength = 5;
 	int count3 = CountIf(words.begin(), words.end(),
-		[thresholdLength](const std::string& word) {return word.length() >= thresholdLength; });
+		[thresholdLength](const std::string& word) {return word.length() > thresholdLength; });
 	std::cout << "Count of words with length greater than " << thresholdLength << ": " << count3 << std::endl;
 	std::cout << "------------------------------" << std::endl;
 }

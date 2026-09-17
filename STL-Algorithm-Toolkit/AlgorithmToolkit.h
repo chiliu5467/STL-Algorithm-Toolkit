@@ -49,7 +49,7 @@ std::size_t CountIf(
     Iterator last,
     Predicate predicate)
 {
-	size_t count = 0;
+	std::size_t count = 0;
     while (first != last)
     {
         if (predicate(*first))

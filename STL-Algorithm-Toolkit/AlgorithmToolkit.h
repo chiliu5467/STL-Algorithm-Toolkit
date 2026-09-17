@@ -42,3 +42,23 @@ Iterator FindIf(
 
     return last;
 }
+
+template <typename Iterator, typename Predicate>
+std::size_t CountIf(
+    Iterator first,
+    Iterator last,
+    Predicate predicate)
+{
+	size_t count = 0;
+    while (first != last)
+    {
+        if (predicate(*first))
+        {
+            count++;
+        }
+
+        ++first;
+    }
+
+    return count;
+}

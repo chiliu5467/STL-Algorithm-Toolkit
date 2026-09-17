@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 
 #include "AlgorithmToolkit.h"
 
@@ -126,11 +127,46 @@ void TestFindIf()
 	std::cout << "------------------------------" << std::endl;
 }
 
+void TestCountIf()
+{
+	std::cout << "=== Test Count If ===" << std::endl;
+	std::vector<int> numbers{
+		1, 3, 7, 8, 11, 12
+	};
+	int count = CountIf(numbers.begin(), numbers.end(),
+		[](int value) {return value % 2 == 0;});
+	int stdCount = std::count_if(numbers.begin(), numbers.end(),
+		[](int value) {return value % 2 == 0;});
+	std::cout << "Count of even values: " << count << std::endl;
+	std::cout << "std::count_if: " << stdCount << std::endl;
+
+	int threshold = 20;
+	std::list<int> values{
+		5, 15, 25, 35
+	};
+	int count2 = CountIf(values.begin(), values.end(),
+		[threshold](int value) { return value > threshold; });
+	std::cout << "Count of values greater than " << threshold << ": " << count2 << std::endl;
+	
+	std::vector<std::string> words{
+		"cat",
+		"elephant",
+		"dog",
+		"giraffe"
+	};
+	int thresholdLength = 5;
+	int count3 = CountIf(words.begin(), words.end(),
+		[thresholdLength](const std::string& word) {return word.length() >= thresholdLength; });
+	std::cout << "Count of words with length greater than " << thresholdLength << ": " << count3 << std::endl;
+	std::cout << "------------------------------" << std::endl;
+}
+
 int main()
 {
 	TestPrintRange();
 	TestFindValue();
 	TestFindIf();
+	TestCountIf();
 
 	return 0;
 }

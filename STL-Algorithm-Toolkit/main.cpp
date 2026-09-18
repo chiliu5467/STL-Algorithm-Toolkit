@@ -161,12 +161,59 @@ void TestCountIf()
 	std::cout << "------------------------------" << std::endl;
 }
 
+void TestEdgeCases()
+{
+	std::cout << "=== Test Edge Cases ===\n";
+
+	// Empty range
+	std::vector<int> empty;
+	auto emptyIt = FindValue(empty.begin(), empty.end(), 10);
+
+	if (emptyIt == empty.end())
+	{
+		std::cout << "Empty range: passed\n";
+	}
+
+	// Single element
+	std::vector<int> single{ 42 };
+	auto singleIt = FindValue(single.begin(), single.end(), 42);
+
+	if (singleIt != single.end())
+	{
+		std::cout << "Single element: passed\n";
+	}
+
+	// No match
+	std::vector<int> values{ 1, 3, 5 };
+	auto noMatch = FindIf(
+		values.begin(),
+		values.end(),
+		[](int value) { return value % 2 == 0; });
+
+	if (noMatch == values.end())
+	{
+		std::cout << "No match: passed\n";
+	}
+
+	// All match
+	auto count = CountIf(
+		values.begin(),
+		values.end(),
+		[](int value) { return value % 2 != 0; });
+
+	if (count == values.size())
+	{
+		std::cout << "All match: passed\n";
+	}
+}
+
 int main()
 {
 	TestPrintRange();
 	TestFindValue();
 	TestFindIf();
 	TestCountIf();
+	TestEdgeCases();
 
 	return 0;
 }
